@@ -1,0 +1,10 @@
+# This file is used to start the Jaeger all-in-one container
+# The Jaeger all-in-one container includes the Jaeger UI which we will use to view traces provided by the OpenTelemetry
+# The Jaeger UI is available at http://localhost:16686
+version: '3.7'
+services:
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "4317:4317"   # OTLP receiver
+      - "16686:16686" # Jaeger UI

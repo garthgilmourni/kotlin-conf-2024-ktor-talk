@@ -1,0 +1,124 @@
+<html>
+<head>
+    <title>WebSocket Client</title>
+    <script>
+        let serverURL;
+        let socket;
+
+
+        function setupSocket() {
+            serverURL = 'ws://0.0.0.0:8080/questions';
+            socket = new WebSocket(serverURL);
+
+
+            socket.onopen = logOpenToConsole;
+            socket.onclose = logCloseToConsole;
+            socket.onmessage = readAndDisplayQuestion;
+        }
+
+
+        function readAndDisplayQuestion(event) {
+            let question = JSON.parse(event.data);
+            logQuestionToConsole(question);
+            addQuestionToTable(question);
+        }
+
+
+        function logQuestionToConsole(task) {
+            console.log(`Received ${task.name}`);
+        }
+
+
+        function logCloseToConsole() {
+            console.log("Web socket connection closed");
+        }
+
+
+        function logOpenToConsole() {
+            console.log("Web socket connection opened");
+        }
+
+
+        function tableBody() {
+            return document.getElementById("questionsTableBody");
+        }
+
+
+        function addQuestionToTable(task) {
+            tableBody().appendChild(questionRow(task));
+        }
+
+
+        function questionRow(question) {
+            return tr([
+                td(question.id),
+                td(question.title)
+            ]);
+        }
+
+
+        function tr(children) {
+            const node = document.createElement("tr");
+            children.forEach(child => node.appendChild(child));
+            return node;
+        }
+
+
+        function td(text) {
+            const node = document.createElement("td");
+            node.appendChild(document.createTextNode(text));
+            return node;
+        }
+
+
+        function getFormValue(name) {
+            return document.forms[0][name].value
+        }
+
+
+        function buildUserIDFromForm() {
+            return {
+                id: getFormValue("userID"),
+            }
+        }
+
+
+        function logSendingToConsole(data) {
+            console.log("About to send",data);
+        }
+
+
+        function sendUserIDViaSocket(data) {
+            socket.send(JSON.stringify(data));
+        }
+
+
+        function sendUserIDToServer() {
+            let userID = buildUserIDFromForm();
+            logSendingToConsole(userID);
+            sendUserIDViaSocket(userID);
+            //prevent form submission
+            return false;
+        }
+    </script>
+</head>
+<body onload="setupSocket()">
+    <h3>View questions by user ID</h3>
+    <form onsubmit="return sendUserIDToServer()">
+        <label for="userID">ID: </label>
+        <input type="text" id="userID" name="userID"
+               size="10" value="2635682">
+        <input type="submit">
+    </form>
+    <hr/>
+    <table rules="all">
+        <thead>
+        <tr>
+            <th>ID</th><th>Title</th>
+        </tr>
+        </thead>
+        <tbody id="questionsTableBody">
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,55 @@
+{
+  "items": [
+    {
+      "tags": [
+        "java"
+      ],
+      "owner": {},
+      "is_answered": true,
+      "view_count": 31038,
+      "answer_count": 3,
+      "score": 13,
+      "last_activity_date": 1628001912,
+      "creation_date": 1502622139,
+      "last_edit_date": 1502884285,
+      "question_id": 123,
+      "link": "https://stackoverflow.com/questions/123/what-is-Java",
+      "title": "What is Java"
+    },
+    {
+      "tags": [
+        "kotlin"
+      ],
+      "owner": {},
+      "is_answered": true,
+      "view_count": 31038,
+      "answer_count": 3,
+      "score": 13,
+      "last_activity_date": 1628001912,
+      "creation_date": 1502622139,
+      "last_edit_date": 1502884285,
+      "question_id": 456,
+      "link": "https://stackoverflow.com/questions/456/what-is-Kotlin",
+      "title": "What is Kotlin"
+    },
+    {
+      "tags": [
+        "haskell"
+      ],
+      "owner": {},
+      "is_answered": true,
+      "view_count": 31038,
+      "answer_count": 3,
+      "score": 13,
+      "last_activity_date": 1628001912,
+      "creation_date": 1502622139,
+      "last_edit_date": 1502884285,
+      "question_id": 789,
+      "link": "https://stackoverflow.com/questions/789/what-is-haskell",
+      "title": "What is Haskell"
+    }
+  ],
+  "has_more": false,
+  "quota_max": 300,
+  "quota_remaining": 250
+}

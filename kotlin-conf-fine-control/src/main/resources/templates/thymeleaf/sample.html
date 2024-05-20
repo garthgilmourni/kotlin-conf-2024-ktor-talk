@@ -1,0 +1,14 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Thymeleaf Page</title>
+</head>
+<body>
+<ol>
+    <li th:each="item: ${items}">
+        <span th:text="${item}"></span>
+    </li>
+</ol>
+</body>
+</html>

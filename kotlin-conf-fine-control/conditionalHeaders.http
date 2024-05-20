@@ -1,0 +1,7 @@
+GET http://0.0.0.0:8080/static/sample1.xml
+###
+
+GET http://0.0.0.0:8080/static/sample2.html
+###
+
+GET http://0.0.0.0:8080/static/sample3.css
